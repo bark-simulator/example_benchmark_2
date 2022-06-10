@@ -1,0 +1,20 @@
+{
+    "BehaviorUctBase": {
+        "Mcts": {
+            "DiscountFactor": 0.9,
+            "UctStatistic": {
+                "ExplorationConstant": 0.7,
+                "ProgressiveWidening": {
+                    "K": 3.0,
+                    "Alpha" : 0.25
+                }
+            },
+            "State": {
+                "CooperationFactor" : 0.1,
+                "ChanceCosts" : false,
+                "ViolatedMaxSteps" : 10,
+                "SplitSafeDistCollision": false
+            }
+        }
+    }
+}

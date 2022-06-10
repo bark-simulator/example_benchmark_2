@@ -1,0 +1,33 @@
+{
+    "BehaviorUctBase": {
+        "Mcts": {
+            "DiscountFactor": 0.9,
+            "UctStatistic": {
+                "ExplorationConstant": 0.7,
+                "ProgressiveWidening": {
+                    "K": 7.0,
+                    "Alpha" : 0.5
+                }
+            },
+            "HypothesisStatistic": {
+                "ProgressiveWidening": {
+                    "HypothesisBased": false,
+                    "Alpha": 0.2,
+                    "K": 2.5
+                },
+                "ExplorationConstant": 0.0
+            },
+            "BeliefTracker": {
+                "RandomSeedHypSampling": 2000,
+                "HistoryLength": 20,
+                "ProbabilityDiscount": 1.0,
+                "PosteriorType": 1
+            },
+            "State": {
+                "ChanceCosts" : false,
+                "ViolatedMaxSteps" : 10,
+                "SplitSafeDistCollision": false
+            }
+        }
+    }
+}

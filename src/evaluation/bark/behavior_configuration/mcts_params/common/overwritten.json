@@ -1,0 +1,53 @@
+{
+    "BehaviorUctBase": {
+        "Mcts": {
+            "UctStatistic": {
+                "ExplorationConstant": 0.699999988079071,
+                "ProgressiveWidening": {
+                    "K": 0.4,
+                    "Alpha" : 0.5
+                }
+            },
+            "HypothesisStatistic": {
+                "CostBasedActionSelection": false,
+                "ProgressiveWidening": {
+                    "HypothesisBased": false,
+                    "Alpha": 0.5,
+                    "K": 0.4
+                },
+                "ExplorationConstant": 0.0
+            },
+            "BeliefTracker": {
+                "RandomSeedHypSampling": 2000,
+                "HistoryLength": 20,
+                "ProbabilityDiscount": 1.0,
+                "PosteriorType": 1
+            },
+            "CostConstrainedStatistic": {
+                "LambdaInit": [1.0, 1.0],
+                "Kappa": 1.0,
+                "GradientUpdateScaling": 1.0,
+                "TauGradientClip": 1.0,
+                "ActionFilterFactor": 0.0,
+                "UseCostTresholding": [
+                    0.0,
+                    0.0
+                ],
+                "UseChanceConstrainedUpdate": [
+                    1.0,
+                    0.0
+                ],
+                "CostThresholds": [
+                    0.00,
+                    0.05
+                ],
+                "UseLambdaPolicy": true,
+                "ExplorationReductionFactor" : 0.0,
+                "ExplorationReductionOffset" : 0.0,
+                "ExplorationReductionInit" : 0.0,
+                "MinVisitsPolicyReady" : -1,
+                "MaxSolverTime" : -1
+            }
+        }
+    }
+}

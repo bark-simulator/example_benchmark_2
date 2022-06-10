@@ -1,0 +1,113 @@
+{
+    "BehaviorUctBase": {
+        "EgoBehavior": {
+            "BehaviorMotionPrimitives": {
+                "IntegrationTimeDelta": 0.019999999552965164
+            },
+            "BehaviorMPMacroActions": {
+                "CheckValidityInPlan": false
+            },
+            "AddLaneChangeActions" : true,
+            "AddGapKeeping" : true,
+            "AccelerationInputs": [
+                -5.0,
+                -2.0,
+                0.0,
+                2.0, 
+                5.0
+            ],
+            "BehaviorIDMClassic": {
+                "MinimumSpacing": 1.0,
+                "DesiredTimeHeadway": 1.0,
+                "MaxAcceleration": 1.7000000476837158,
+                "AccelerationLowerBound": -5.0,
+                "AccelerationUpperBound": 5.0,
+                "DesiredVelocity": 10.0,
+                "ComfortableBrakingAcceleration": 1.6699999570846558,
+                "MinVelocity": 0.0,
+                "MaxVelocity": 50.0,
+                "Exponent": 4,
+                "BrakeForLaneEnd": true,
+                "BrakeForLaneEndEnabledDistance": 12.0,
+                "BrakeForLaneEndDistanceOffset": 8.0,
+                "NumTrajectoryTimePoints": 11,
+                "CoolnessFactor": 0.0,
+                "MaxLatDifferenceToBeFront": 1.0,
+                "MaxLonDifferenceToBeFront" : 0.0,
+                "MaxAngleDifferenceToBeFront" : 2.356194490192345
+            },
+            "DynamicModel": {
+                "LatAccMax": 4.0,
+                "LatAccMin": -4.0,
+                "LonAccelerationMax": 5.0,
+                "LonAccelerationMin": -5.0
+            },
+            "BehaviorIDMLaneTracking": {
+                "LimitSteeringRate": true,
+                "CrosstrackErrorGain": 1.0
+            },
+            "PrimitiveConstAccStayLane": {
+                "Acceleration": 0.0,
+                "RestrictBrakeForLaneEnd" : true
+            },
+            "MinLength": 0.0
+        },
+        "Mcts" : {
+            "State" : {
+                "PredictionK": 0.2,
+                "PredictionAlpha": 1.0,
+                "CooperationFactor": 0.1,
+                "DrivableCollisionCost" : 1.0,
+                "DrivableCollisionReward" : -1.0,
+                "EvaluationParameters" : {
+                    "OutOfDrivableIsTerminal" : true
+                },
+                "EvaluatorParams": {
+                    "EvaluatorDynamicSafeDist": {
+                        "ConsiderCrossingCorridors" : true,
+                        "MaxAgentssCrossingCorridors" : 4,
+                        "LateralDistanceThreshold" : 100.0,
+                        "AngleDistanceThreshold" : 2.35619449019,
+                        "UseFracParamFromWorld" : false,
+                        "ReactionTimeEgo" : 1.0,
+                        "CheckLateralSafeDist" : true
+                    },
+                    "EvaluatorStaticSafeDist": {
+                        "LateralSafeDist": 0.5,
+                        "LongitudinalSafeDist": 0.5
+                    },
+                    "EvaluatorSafeDistDrivableArea": {
+                        "LateralSafeDist": 0.0,
+                        "LongitudinalSafeDist": 0.0
+                    },
+                    "EvaluatorRss": {
+                        "MapFilename": "src/evaluation/bark/database_configuration/maps/freeway_enter.xodr",
+                        "Ego": {
+                            "TimeResponse": 0.3,
+                            "FluctMargin": 0.2,
+                            "AccLatBrakeMin": -0.8,
+                            "AccLatBrakeMax": 0.1,
+                            "BrakeLonMinCorrect": -6.0,
+                            "BrakeLonMin": -6.0,
+                            "BrakeLonMax": -6.0,
+                            "AccLonMax": 1.4
+                        },
+                        "Others": {
+                            "TimeResponse": 1.0,
+                            "FluctMargin": 0.2,
+                            "AccLatBrakeMin": -0.8,
+                            "AccLatBrakeMax": 0.1,
+                            "BrakeLonMinCorrect": -6.0,
+                            "BrakeLonMin": -6.0,
+                            "BrakeLonMax": -6.0,
+                            "AccLonMax": 1.4
+                        },
+                        "ScalingRelevantRange": 1.0,
+                        "RoutePredictRange": 50.0
+                    }
+                }
+            }
+        },
+        "MaxNearestAgents" : 3
+    }
+}

@@ -1,0 +1,78 @@
+{
+    "Visualization": {
+        "Agents": {
+            "Color": {
+                "Other": {
+                    "Lines": [
+                        0.1,
+                        0.1,
+                        0.1
+                    ],
+                    "Face": [
+                        0.2,
+                        0.2,
+                        0.8
+                    ]
+                },
+                "Controlled": {
+                    "Lines": [
+                        0.9,
+                        0,
+                        0
+                    ],
+                    "Face": [
+                        0.9,
+                        0.1,
+                        0.2
+                    ]
+                },
+                "UseColormapForOtherAgents": false,
+                "IfColormapUseLineColorOthers": true
+            },
+            "Alpha": {
+                "Controlled": 0.8,
+                "Other": 1
+            },
+            "ColorRoute": [
+                0.2,
+                0.2,
+                0.2
+            ],
+            "DrawRoute": true,
+            "DrawAgentId": true,
+            "DrawEvalGoals": true,
+            "EvalGoalColor": [
+                0.49,
+                0.63,
+                0.83
+            ],
+            "DrawHistory": false,
+            "DrawHistoryDrawFace": true
+        },
+        "Map": {
+            "XodrLanes": {
+                "Boundaries": {
+                    "Color": [
+                        0.7,
+                        0.7,
+                        0.7
+                    ],
+                    "Alpha": 1.0,
+                    "Linewidth": 1.0
+                }
+            },
+            "Plane": {
+                "Color": [
+                    0.8,
+                    0.8,
+                    0.8,
+                    0.8
+                ],
+                "Alpha": 1.0
+            }
+        },
+        "Evaluation": {
+            "DrawLTLDebugInfo": false
+        }
+    }
+}

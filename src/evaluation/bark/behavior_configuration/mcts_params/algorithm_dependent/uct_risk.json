@@ -1,0 +1,50 @@
+{
+    "BehaviorUctBase": {
+        "Mcts": {
+            "DiscountFactor": 0.9,
+            "HypothesisStatistic": {
+                "ProgressiveWidening": {
+                    "HypothesisBased": false,
+                    "K": 2.5,
+                    "Alpha" : 0.2
+                },
+                "ExplorationConstant": 0.0
+            },
+            "BeliefTracker": {
+                "RandomSeedHypSampling": 2000,
+                "HistoryLength": 20,
+                "ProbabilityDiscount": 1.0,
+                "PosteriorType": 1
+            },
+            "CostConstrainedStatistic": {
+                "LambdaInit": [1.0, 1.0],
+                "Kappa": 10.0,
+                "GradientUpdateScaling": 1.0,
+                "TauGradientClip": 1.0,
+                "ActionFilterFactor": 3.5,
+                "UseCostTresholding": [
+                    0.0,
+                    0.0
+                ],
+                "UseChanceConstrainedUpdate": [
+                    0.0,
+                    1.0
+                ],
+                "CostThresholds": [
+                    0.00,
+                    0.05
+                ],
+                "UseLambdaPolicy": true,
+                "MaxSolverTime" : -1
+            },
+            "State": {
+                "ChanceCosts" : false,
+                "SplitSafeDistCollision": true
+            }
+        }
+    },
+    "BehaviorUctRiskConstraint": {
+        "EstimateScenarioRisk": false,
+        "UpdateScenarioRisk": false
+    }
+}

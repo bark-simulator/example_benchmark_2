@@ -1,0 +1,40 @@
+{
+    "BehaviorUctBase": {
+        "Mcts": {
+            "RandomSeed": 1000,
+            "MaxSearchTime": 1000000,
+            "MaxNumIterations": 10000,
+            "MaxNumNodes" : 4000,
+            "MaxSearchDepth": 10,
+            "UseBoundEstimation" : true,
+            "NumParallelMcts" : 1,
+            "UseMultiThreading" : false,
+            "RandomHeuristic": {
+                "MaxSearchTime": 20000000,
+                "MaxNumIterations": 10
+            },
+            "State": {
+                "StepReward": 0.0,
+                "NormalizationTau" : 10.0, 
+                "EvaluationParameters": {
+                    "StaticSafeDistIsTerminal": true,
+                    "DynamicSafeDistIsTerminal": false,
+                    "AddSafeDist": true
+                },
+                "EvaluatorParams": {
+                    "EvaluatorDynamicSafeDist" : {
+                        "MaxOtherDecceleration": -5.0,
+                        "MaxEgoDecceleration": -5.0,
+                        "ReactionTimeOthers": 1.0,
+                        "ToRear": true
+                    }
+                }
+            }
+        },
+        "DumpTree": false,
+        "ExtractEdgeInfo" : false,
+        "ExtractStateInfo" : false,
+        "MaxExtractionDepth" : 10,
+        "ConstantActionIndex" : -1
+    }
+}
