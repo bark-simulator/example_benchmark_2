@@ -1,0 +1,338 @@
+{
+    "Scenario": {
+        "Generation": {
+            "GeneratorName": "ConfigurableScenarioGeneration",
+            "GeneratorSeed": 2000,
+            "SetName": "highway_mid_dense",
+            "SetDescription": "",
+            "NumScenarios": 20,
+            "NumSets": 1,
+            "ConfigurableScenarioGeneration": {
+                "SinksSources": [
+                    {
+                        "SourceSink": [
+                            [
+                                1.692,
+                                -122.59
+                            ],
+                            [
+                                1.692,
+                                122.59
+                            ]
+                        ],
+                        "Description": "left_lane",
+                        "ConfigAgentStatesGeometries": {
+                            "Type": "UniformVehicleDistribution",
+                            "LanePositions": [
+                                0
+                            ],
+                            "VehicleDistanceRange": [
+                                5,
+                                10
+                            ],
+                            "OtherVehicleVelocityRange": [
+                                5.3,
+                                6.1
+                            ],
+                            "SRange": [
+                                0.1,
+                                0.8
+                            ]
+                        },
+                        "ConfigBehaviorModels": {
+                            "Type": "BehaviorSpaceSampling",
+                            "ModelType": "BehaviorIDMStochastic",
+                            "BehaviorSpace": {
+                                "Definition": {
+                                    "ModelType": "BehaviorIDMStochastic",
+                                    "SpaceBoundaries": {
+                                        "BehaviorIDMClassic": {
+                                            "MinimumSpacing": 2.0,
+                                            "DesiredTimeHeadway": 1.5,
+                                            "MaxAcceleration": 1.7000000476837158,
+                                            "AccelerationLowerBound": -5.0,
+                                            "AccelerationUpperBound": 5.0,
+                                            "DesiredVelocity": 15.0,
+                                            "ComfortableBrakingAcceleration": 1.6699999570846558,
+                                            "MinVelocity": 0.0,
+                                            "MaxVelocity": 50.0,
+                                            "Exponent": 4,
+                                            "BrakeForLaneEnd": false,
+                                            "BrakeForLaneEndEnabledDistance": 0.0,
+                                            "BrakeForLaneEndDistanceOffset": 15.0,
+                                            "NumTrajectoryTimePoints": 11,
+                                            "CoolnessFactor": 0.0,
+                                            "MaxAngleDifferenceToBeFront" : 3.1,
+                                            "MaxLatDifferenceToBeFront": 1.0,
+                                            "MaxLonDifferenceToBeFront" : 0.0
+                                        },
+                                        "BehaviorIDMStochastic": {
+                                            "UseIntentionMechanism" : false,
+                                            "HeadwayDistribution": [
+                                                0.5,
+                                                2
+                                            ],
+                                            "SpacingDistribution": [
+                                                0.5,
+                                                1.0
+                                            ],
+                                            "MaxAccDistribution": [
+                                                1.5,
+                                                2.0
+                                            ],
+                                            "DesiredVelDistribution": [
+                                                8.0,
+                                                14.0
+                                            ],
+                                            "ComftBrakingDistribution": [
+                                                1.5,
+                                                2.0                                               
+                                            ],
+                                            "CoolnessFactorDistribution": [
+                                                0.0
+                                            ],
+                                            "YieldingDurationDistribution": [
+                                                0.0
+                                            ],
+                                            "NoYieldingDurationDistribution": [
+                                                0.0
+                                            ]
+                                        }
+                                    },
+                                    "PriorKnowledgeFunction": {
+                                        "FunctionDefinition": "UniformKnowledgeFunctionDefinition",
+                                        "PriorKnowledgeFunction": {
+                                            "NumPartitionsIntegration": 100
+                                        }
+                                    }
+                                },
+                                "Sampling": {
+                                    "RandomSeed": 1000,
+                                    "BehaviorIDMStochastic": {
+                                        "HeadwayDistribution": {
+                                            "Partitions": null,
+                                            "DistributionType": "UniformDistribution1D",
+                                            "Width": [
+                                                0.1,
+                                                0.3
+                                            ],
+                                            "RandomSeed": 1000
+                                        },
+                                        "SpacingDistribution": {
+                                            "Partitions": null,
+                                            "DistributionType": "UniformDistribution1D",
+                                            "Width": [
+                                                0.1,
+                                                0.5
+                                            ],
+                                            "RandomSeed": 1000
+                                        },
+                                        "MaxAccDistribution": {
+                                            "Partitions": null,
+                                            "DistributionType": "UniformDistribution1D",
+                                            "Width": [
+                                                0.1,
+                                                0.3
+                                            ],
+                                            "RandomSeed": 1000
+                                        },
+                                        "DesiredVelDistribution": {
+                                            "Partitions": null,
+                                            "DistributionType": "UniformDistribution1D",
+                                            "Width": [
+                                                0.5,
+                                                1.0
+                                            ],
+                                            "RandomSeed": 1000
+                                        },
+                                        "ComftBrakingDistribution": {
+                                            "Partitions": null,
+                                            "DistributionType": "UniformDistribution1D",
+                                            "Width": [
+                                                0.1,
+                                                0.3
+                                            ],
+                                            "RandomSeed": 1000
+                                        },
+                                        "CoolnessFactorDistribution": {
+                                            "DistributionType": "FixedValue"
+                                        },
+                                        "YieldingDurationDistribution": {
+                                            "DistributionType": "FixedValue"
+                                        },
+                                        "NoYieldingDurationDistribution": {
+                                            "DistributionType": "FixedValue"
+                                        }
+                                    }
+                                }
+                            }
+                        },
+                        "ConfigExecutionModels": {
+                            "Type": "FixedExecutionType",
+                            "ModelType": "ExecutionModelInterpolate"
+                        },
+                        "ConfigDynamicModels": {
+                            "Type": "FixedDynamicType",
+                            "ModelType": "SingleTrackModel"
+                        },
+                        "ConfigGoalDefinitions": {
+                            "Type": "FixedGoalTypes",
+                            "GoalTypeControlled": "EndOfLane",
+                            "EnforceControlledGoal": false,
+                            "EnforceOthersGoal": false,
+                            "GoalTypeOthers": "EndOfLane",
+                            "MaxLateralDist": [
+                                0.8,
+                                0.8
+                            ],
+                            "LongitudinalRange": [
+                                0.0,
+                                1.0
+                            ],
+                            "MaxOrientationDifference": [
+                                0.1,
+                                0.1
+                            ],
+                            "VelocityRange": [
+                                0.0,
+                                20.0
+                            ]
+                        },
+                        "ConfigControlledAgents": {
+                            "Type": "NoneControlled"
+                        },
+                        "AgentParams": {
+                            "MaxHistoryLength": 50
+                        }
+                    },
+                    {
+                        "SourceSink": [
+                            [
+                                3.692,
+                                -122.59
+                            ],
+                            [
+                                3.692,
+                                122.59
+                            ]
+                        ],
+                        "Description": "right_lane",
+                        "ConfigAgentStatesGeometries": {
+                            "Type": "UniformVehicleDistribution",
+                            "LanePositions": [
+                                1
+                            ],
+                            "VehicleDistanceRange": [
+                                10,
+                                20
+                            ],
+                            "OtherVehicleVelocityRange": [
+                                5.5,
+                                11.1
+                            ],
+                            "SRange": [
+                                0.4,
+                                0.71
+                            ]
+                        },
+                        "ConfigBehaviorModels": {
+                            "Type": "FixedBehaviorType",
+                            "ModelType": "BehaviorIDMClassic",
+                            "ModelParams": {
+                                "BehaviorIDMClassic": {
+                                    "MaxVelocity": 60.0,
+                                    "MinimumSpacing": 2.0,
+                                    "DesiredTimeHeadway": 1.5,
+                                    "MaxAcceleration": 1.7000000476837158,
+                                    "AccelerationLowerBound": -5.0,
+                                    "AccelerationUpperBound": 8.0,
+                                    "DesiredVelocity": 15.0,
+                                    "ComfortableBrakingAcceleration": 1.6699999570846558,
+                                    "MinVelocity": 0.0,
+                                    "Exponent": 4,
+                                    "BrakeForLaneEnd": false,
+                                    "BrakeForLaneEndEnabledDistance": 60.0,
+                                    "BrakeForLaneEndDistanceOffset": 20.0,
+                                    "NumTrajectoryTimePoints": 11,
+                                    "CoolnessFactor": 0.0
+                                }
+                            }
+                        },
+                        "ConfigExecutionModels": {
+                            "Type": "FixedExecutionType",
+                            "ModelType": "ExecutionModelInterpolate"
+                        },
+                        "ConfigDynamicModels": {
+                            "Type": "FixedDynamicType",
+                            "ModelType": "SingleTrackModel"
+                        },
+                        "ConfigGoalDefinitions": {
+                            "Type": "FixedGoalTypes",
+                            "GoalTypeControlled": "LaneChangeLeft",
+                            "EnforceControlledGoal": true,
+                            "EnforceOthersGoal": true,
+                            "GoalTypeOthers": "EndOfLane",
+                            "MaxLateralDist": [
+                                0.8,
+                                0.8
+                            ],
+                            "LongitudinalRange": [
+                                0.0,
+                                1.0
+                            ],
+                            "MaxOrientationDifference": [
+                                0.1,
+                                0.1
+                            ],
+                            "VelocityRange": [
+                                0,
+                                20
+                            ]
+                        },
+                        "ConfigControlledAgents": {
+                            "Type": "RandomSingleAgent"
+                        },
+                        "AgentParams": {
+                            "MaxHistoryLength": 50
+                        }
+                    }
+                ],
+                "MapFilename": "maps/city_highway_straight.xodr",
+                "ConflictResolution": { }
+            }
+        }
+    },
+    "World": {
+        "remove_agents_out_of_map": true,
+        "FracLateralOffset" : 2.0
+    },
+    "Simulation": {
+        "StepTime": 0.2
+    },
+    "EvaluatorRss": {
+        "RoutePredictRange": 50.0,
+        "ScalingRelevantRange": 1.0,
+        "TimeResponse": 0.2,
+        "FluctMargin": 0.10000000149011612,
+        "AccLatBrakeMin": -0.800000011920929,
+        "AccLatBrakeMax": 0.20000000298023224,
+        "BrakeLonMinCorrect": -1.6699999570846558,
+        "BrakeLonMin": -1.690000057220459,
+        "BrakeLonMax": -1.7000000476837158,
+        "AccLonMax": 1.7000000476837158,
+        "MapFilename": "src/database/maps/DR_DEU_Merging_MT_v01_centered.xodr",
+        "Others": {
+            "RoutePredictRange": 50.0,
+            "ScalingRelevantRange": 1.0,
+            "TimeResponse": 1.0,
+            "FluctMargin": 0.10000000149011612,
+            "AccLatBrakeMin": -0.800000011920929,
+            "AccLatBrakeMax": 0.20000000298023224,
+            "BrakeLonMinCorrect": -1.6699999570846558,
+            "BrakeLonMin": -1.690000057220459,
+            "BrakeLonMax": -1.7000000476837158,
+            "AccLonMax": 1.7000000476837158,
+            "MapFilename": "src/database/maps/DR_DEU_Merging_MT_v01_centered.xodr"
+        }
+    }
+}

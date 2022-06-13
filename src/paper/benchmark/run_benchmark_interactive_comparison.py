@@ -47,7 +47,7 @@ logging.info("Logging into: {}".format(log_folder))
 bark.core.commons.GLogInit(sys.argv[0], log_folder, 0, True, "behavior*=3")
 
 # reduced max steps and scenarios for testing
-num_scenarios = 200
+num_scenarios = 10
 hypotheses_split = [16]
 
 logging.getLogger().setLevel(logging.INFO)
@@ -64,7 +64,7 @@ except:
 
 
 dbs = DatabaseSerializer(test_scenarios=2, test_world_steps=20, num_serialize_scenarios=num_scenarios)
-dbs.process("src/evaluation/bark/database_configuration/database", filter_sets="**/[b]*/*.json")
+dbs.process("src/evaluation/bark/database_configuration/database", filter_sets="**/*mid_dense.json")
 local_release_filename = dbs.release(version="tmp2", tmp_dir=database_tmp_dir)
 db = BenchmarkDatabase(database_root=local_release_filename, tmp_dir=database_tmp_dir)
 
@@ -84,10 +84,9 @@ benchmark_configs, param_servers = \
             "BehaviorConfigCooperative",
              "BehaviorConfigRMDP",
             "BehaviorConfigRSBG"
-          ], {
-               "rural_left_turn_no_risk" : "1D_desired_gap_urban.json",
-               "freeway_enter" : "1D_desired_gap_urban.json"
-               }, [-1.0], hypotheses_split ,
+          ],{
+               "highway_light" : "1D_desired_gap_urban.json",
+               "highway_mid" : "1D_desired_gap_urban.json"}, [-1.0], hypotheses_split ,
                 param_mappings=param_mappings)
 
 evaluators, param_servers_persisted = create_evaluation_configs()

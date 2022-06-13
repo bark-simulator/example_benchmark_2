@@ -28,6 +28,6 @@ renderer = VideoRenderer(renderer=viewer, world_step_time=0.2)
 
 dbs = DatabaseSerializer(test_scenarios=num_test_scenarios_per_scenario_set, test_world_steps=num_steps_per_scenario,
                          num_serialize_scenarios=num_test_scenarios_per_scenario_set, visualize_tests=True, viewer=renderer)
-test_result = dbs.process("src/evaluation/bark/database_configuration/database", filter_sets="**/highway/*.json")
+test_result = dbs.process("src/evaluation/bark/database_configuration/database", filter_sets="**/*light_dense.json")
 
 renderer.export_video(filename="./database")

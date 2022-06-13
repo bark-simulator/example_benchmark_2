@@ -44,8 +44,8 @@ logging.info("Logging into: {}".format(log_folder))
 bark.core.commons.GLogInit(sys.argv[0], log_folder, 0, True, "behavior*=3")
 
 # reduced max steps and scenarios for testing
-num_scenarios = 200
-num_iterations = [10000]
+num_scenarios = 10
+num_iterations = [1000]
 use_tree_extraction = False
 hypotheses_split = [16]
 
@@ -63,7 +63,7 @@ except:
 
 
 dbs = DatabaseSerializer(test_scenarios=2, test_world_steps=20, num_serialize_scenarios=num_scenarios)
-dbs.process("src/evaluation/bark/database_configuration/database", filter_sets="**/[i]*/*.json")
+dbs.process("src/evaluation/bark/database_configuration/database", filter_sets="**/*mid_dense*.json")
 local_release_filename = dbs.release(version="tmp2", tmp_dir=database_tmp_dir)
 
 db = BenchmarkDatabase(database_root=local_release_filename, tmp_dir=database_tmp_dir)
@@ -87,9 +87,8 @@ benchmark_configs1, param_servers1 = \
             "BehaviorConfigRSBG_wo_risk",
             "BehaviorConfigIntentRSBG_wo_risk",
           ], {
-               "rural_left_turn_no_risk" : "1D_desired_gap_urban.json",
-               "freeway_enter" : "1D_desired_gap_urban.json"
-               }, [-1.0], hypotheses_split ,
+               "highway_light" : "1D_desired_gap_urban.json",
+               "highway_mid" : "1D_desired_gap_urban.json"}, [-1.0], hypotheses_split ,
                 param_mappings=param_mappings)
 
 benchmark_configs2, param_servers2 = \
@@ -98,9 +97,8 @@ benchmark_configs2, param_servers2 = \
             "BehaviorConfigRSBG_wo_risk",
             "BehaviorConfigIntentRSBG_wo_risk",
           ], {
-               "rural_left_turn_no_risk" : "1D_desired_gap_rural_large_lon.json",
-               "freeway_enter" : "1D_desired_gap_urban.json"
-               }, [-1.0], hypotheses_split ,
+               "highway_light" : "1D_desired_gap_urban.json",
+               "highway_mid" : "1D_desired_gap_urban.json"}, [-1.0], hypotheses_split ,
                 param_mappings=param_mappings)
 
 evaluators, param_servers_persisted = create_evaluation_configs()
@@ -142,9 +140,6 @@ data_frame = result.get_data_frame()
 
 data_frame["max_steps"] = data_frame.Terminal.apply(lambda x: "max_steps" in x and (not "collision" in x))
 data_frame["success"] = data_frame.Terminal.apply(lambda x: "success" in x and (not "collision" in x) and (not "max_steps" in x))
-
-data_frame["safe_violate"] = data_frame.apply(lambda x: (x.safe_dist_dyn > 0) or (x.safe_dist_stat > 0), axis=1)
-data_frame["avg_dyn_violate"] = data_frame.safe_dist_dyn / data_frame.step
 
 data_frame.fillna(-1)
 #dfg = data_frame.fillna(-1).groupby(["behavior", "scen_set", "update", "risk", "filter", "kappa", "num_hypothesis"]).mean()

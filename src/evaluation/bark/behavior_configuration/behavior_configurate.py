@@ -17,9 +17,9 @@ PARAMS_SCEN_DEP = os.path.join(MCTS_PARAMS_ROOT, "scenario_dependent")
 COMMON_PARAM_FILE = os.path.join(MCTS_PARAMS_ROOT, "common/common.json")
 OVERWRITTEN_PARAM_FILE = os.path.join(MCTS_PARAMS_ROOT, "common/overwritten.json")
 BEHAVIOR_SPACE_ROOT = "src/evaluation/bark/behavior_configuration/behavior_spaces"
-SCENARIO_TYPES = ["rural_left_turn_risk", "rural_left_turn_no_risk",  "overtaking_decision", "freeway_enter", "urban_left_turn", "interaction_merging"]
-MAX_STEPS_FREEWAY = 30
-MAX_STEPS_RURAL = 50
+SCENARIO_TYPES = ["highway_light", "highway_mid"]
+MAX_STEPS_FREEWAY_MID = 30
+MAX_STEPS_FREEWAY_LIGHT = 20
 
 def dump_defaults(dir):
     params = ParameterServer()
@@ -346,7 +346,7 @@ def create_evaluation_configs(add_mcts_infos=False):
 
 
 def get_terminal_criteria(max_steps=None):
-  return {"freeway_enter" : {"collision_other" : lambda x: x,"max_steps": lambda x : (x> max_steps) if max_steps else (x > MAX_STEPS_FREEWAY),  "success" : lambda x: x},
-          "rural_left_turn" : {"collision_other" : lambda x: x,"max_steps": lambda x : (x> max_steps) if max_steps else (x> MAX_STEPS_RURAL),  "success" : lambda x: x}}
+  return {"highway_mid" : {"collision_other" : lambda x: x,"max_steps": lambda x : (x> max_steps) if max_steps else (x > MAX_STEPS_FREEWAY_MID),  "success" : lambda x: x},
+          "highway_light" : {"collision_other" : lambda x: x,"max_steps": lambda x : (x> max_steps) if max_steps else (x> MAX_STEPS_FREEWAY_LIGHT),  "success" : lambda x: x}}
   
 

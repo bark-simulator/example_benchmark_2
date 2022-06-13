@@ -4,7 +4,6 @@ import random
 import math
 import colorsys
 from collections import defaultdict
-from src.common.plotting import *
 from bark.runtime.viewer.matplotlib_viewer import MPViewer
 from bark.core.geometry import Point2d, Polygon2d
 from bark.core.models.behavior import BehaviorUCTRiskConstraint

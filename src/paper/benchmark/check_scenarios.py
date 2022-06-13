@@ -53,7 +53,7 @@ if not os.path.exists("src"):
 
 
 dbs = DatabaseSerializer(test_scenarios=2, test_world_steps=20, num_serialize_scenarios=num_scenarios)
-dbs.process("src/evaluation/bark/database_configuration/database", filter_sets="**/[i]*/free*intent.json")
+dbs.process("src/evaluation/bark/database_configuration/database", filter_sets="**/*mid_dense.json")
 local_release_filename = dbs.release(version="tmp2")
 
 db = BenchmarkDatabase(database_root=local_release_filename)
@@ -90,8 +90,8 @@ benchmark_configs, param_servers = \
          #   "BehaviorConfigRandomMacro",
           # "BehaviorConfigSBGFullInfo"
           ], {
-               "rural_left_turn_risk" : "1D_desired_gap_urban.json",
-               "freeway_enter" : "1D_desired_gap_urban.json"}, [0.1], [16],
+               "highway_light" : "1D_desired_gap_urban.json",
+               "highway_mid" : "1D_desired_gap_urban.json"}, [0.1], [16],
                 param_mappings=param_mappings)
 benchmark_runner = BenchmarkRunner(benchmark_database = db,
                                     evaluators = evaluators,
