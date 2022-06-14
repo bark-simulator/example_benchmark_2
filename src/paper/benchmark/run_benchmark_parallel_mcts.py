@@ -43,7 +43,7 @@ logging.info("Logging into: {}".format(log_folder))
 bark.core.commons.GLogInit(sys.argv[0], log_folder, 0, True, "behavior*=3")
 
 # reduced max steps and scenarios for testing
-num_scenarios = 200
+num_scenarios = 10
 
 
 logging.getLogger().setLevel(logging.INFO)

@@ -18,22 +18,13 @@ import bark.core.commons
 
 from load.benchmark_database import BenchmarkDatabase
 from serialization.database_serializer import DatabaseSerializer
-from bark.benchmark.benchmark_runner_mp import BenchmarkRunnerMP, BenchmarkRunner, BenchmarkResult
+from bark.benchmark.benchmark_runner_mp import BenchmarkRunnerMP
 
-from bark.runtime.viewer.matplotlib_viewer import MPViewer
-from bark.runtime.viewer.viewer import generatePoseFromState
-from bark.runtime.viewer.video_renderer import VideoRenderer
-
-from bark.core.models.dynamic import StateDefinition
-from bark.core.models.behavior import BehaviorIDMClassic, BehaviorMacroActionsFromParamServer
-
-from bark.runtime.commons.parameters import ParameterServer
 from src.evaluation.bark.behavior_configuration.behavior_configs import *
 from src.evaluation.bark.behavior_configuration.behavior_configurate import \
         dump_defaults, create_behavior_configs, create_mcts_params, \
         create_benchmark_configs, create_evaluation_configs, get_terminal_criteria
 from src.common.pyhelpers import get_ray_init_config
-from bark.benchmark.benchmark_analyzer import BenchmarkAnalyzer
 
 
 from bark.runtime.scenario.scenario_generation.configurable_scenario_generation \
@@ -126,7 +117,6 @@ data_frame["safe_violate"] = data_frame.apply(lambda x: (x.safe_dist_dyn > 0) or
 data_frame["avg_dyn_violate"] = data_frame.safe_dist_dyn / data_frame.step
 
 data_frame.fillna(-1)
-#dfg = data_frame.fillna(-1).groupby(["behavior", "scen_set", "update", "risk", "filter", "kappa", "num_hypothesis"]).mean()
 dfg = data_frame.fillna(-1).groupby(["behavior", "scen_set", "risk", "num_hypothesis"]).mean()
 print(dfg.to_string())
 

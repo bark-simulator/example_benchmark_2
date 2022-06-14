@@ -47,9 +47,9 @@ logging.info("Logging into: {}".format(log_folder))
 bark.core.commons.GLogInit(sys.argv[0], log_folder, 0, True, "behavior*=3")
 
 # reduced max steps and scenarios for testing
-num_scenarios = 20
+num_scenarios = 200
 hypotheses_split = [16]
-risk_levels = [0.01, 0.1, 0.2, 0.4, 0.6, 0.8, 1.0]
+risk_levels = [0.01, 0.1, 0.2, 0.4, 0.8, 1.0]
 variations_kappa = [10.0]   
 variations_filter = [3.5]
 
@@ -92,7 +92,7 @@ benchmark_configs, param_servers = \
          create_benchmark_configs(db, num_scenarios, 
           [
          "BehaviorConfigRCRSBGLocal",
-         "BehaviorConfigRCRSBGLocalFullInfo"
+      #   "BehaviorConfigRCRSBGLocalFullInfo"
           ],{
                "highway_light" : "1D_desired_gap_urban.json",
                "highway_mid" : "1D_desired_gap_urban.json"}, risk_levels, hypotheses_split ,
@@ -107,7 +107,7 @@ if "slurm_num_cpus" in os.environ:
     logging.info("Cpus={} and memory={} based on environment variables.".format(num_cpus, memory))
 else:
     memory = 40*1000*1024*1024 # 32gb
-    num_cpus=6
+    num_cpus=10
 
 benchmark_runner = BenchmarkRunnerMP(benchmark_database = db,
                                       evaluators = evaluators,
