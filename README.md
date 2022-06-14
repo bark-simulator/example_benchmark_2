@@ -1,6 +1,6 @@
-# example_benchmark_2
-Repository implements benchmarks of several Multi-Agent Monte Carlo Tree Search interactive planners for autonomous vehicles. 
-The implementation and description of the implemented interactive planners is given in the repository [planner-mcts](https://github.com/bark-simulator/planner-mcts). 
+# Benchmarking Risk-Constrained, Probabilistic and Cooperative Multi-Agent Monte Carlo Tree Search Planners for Autonomous Driving.
+The code implements configurable benchmarks of several Multi-Agent Monte Carlo Tree Search planners in applications of autonomous driving. 
+The implementation and description of the implemented planners is given in the repository [planner-mcts](https://github.com/bark-simulator/planner-mcts). 
 
 ## Contribution & Structure
 A fully functional experiment setup to start researching the Multi-Agent MCTS planners implemented in [planner-mcts](https://github.com/bark-simulator/planner-mcts). The repository provides
