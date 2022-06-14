@@ -42,7 +42,6 @@ cc_library(
         name = "mamcts_project",
         commit="e6bc1fc84bc97710940252e2ef64c4a6e571fa47",
         remote = "https://github.com/juloberno/mamcts"
-    #  path = "/home/bernhard/development/mamcts"
     )
 
     # -------- BARK Dependency -------------
@@ -51,25 +50,22 @@ cc_library(
         name = "bark_project",
         commit="7f7461c982010e33561ca5428f3f2519a951ac1c",
         remote = "https://github.com/bark-simulator/bark",
-        # path="/home/bernhard/development/bark"
     )
 
-    # -------- Benchmark Database -----------------------
+    # -------- BARK ML -----------------------
     _maybe(
-    git_repository,
+        git_repository,
         name = "bark_ml_project",
-        commit = "b2feabb4bd78f9d86052ca9ef5ae1f32695a34cc",
-        remote="https://github.com/juloberno/bark-ml"
-        #path = "/home/bernhard/development/bark-ml"
+        commit = "84f9c74b60becbc4bc758e19b201d85a21880717",
+        remote="https://github.com/bark-simulator/bark-ml"
     )
 
     # ------ Planner UCT ------------------------------
     _maybe(
     git_repository,
         name = "planner_uct",
-        commit="03c8e9d24a5d813b1391a9948157fa7e4204076e",
-        remote = "https://github.com/juloberno/bark_hypothesis_uct"
-        # path="/home/bernhard/development/bark_hypothesis_uct"
+        commit="250277b7c2fa7dc4584fad0b2e81c4828a19a145",
+        remote = "https://github.com/bark-simulator/planner-mcts"
     )
     # --------------------------------------------------
 
@@ -79,7 +75,6 @@ cc_library(
         name = "benchmark_database",
         commit="f861eae5fb0fb5f8c67a724f3233f3ed4aa0e2a3",
         remote = "https://github.com/bark-simulator/benchmark-database"
-        #path = "/home/julo/development/benchmark-database"
     )
 
     _maybe(
